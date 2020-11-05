@@ -1,18 +1,14 @@
 <?php
-
+//php artisan make:controller AuthController
 namespace App\Http\Controllers;
+use App\Http\Requests\UserRgisterRequest;
 use App\User;
-use Illuminate\Http\Request;
+//use Illuminate\Http\Request;
+
 
 class AuthController extends Controller
 {
-    public function register(Request $request){
-        //validate user
-        $this->validate($request, [
-            'email' => 'email|required|unique:users,email',
-            'name' => 'required',
-            'password' => 'required|min:6'
-        ]);
+    public function register(UserRgisterRequest $request){
 
         //create user
         $user = User::create([

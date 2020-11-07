@@ -40,6 +40,8 @@ class Kernel extends HttpKernel
         'api' => [
             'throttle:60,1',
             'bindings',
+            //https://github.com/fruitcake/laravel-cors
+            \Fruitcake\Cors\HandleCors::class,
         ],
     ];
 

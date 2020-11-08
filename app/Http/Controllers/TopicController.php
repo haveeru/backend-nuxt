@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Topic;
+use App\Http\Resources\Topic as TopicResource;
 
 class TopicController extends Controller
 {
@@ -19,5 +20,8 @@ class TopicController extends Controller
 
         $topic->save();
         $topic->posts()->save($post);
+
+        // retun data using topic resources (json formatted)
+        return new TopicResource($topic);
     }
 }

@@ -33,4 +33,8 @@ class TopicController extends Controller
         // retun data using topic resources (json formatted)
         return new TopicResource($topic);
     }
+
+    public function show(Topic $topic) {
+        return new TopicResource($topic);
+    }
 }

@@ -10,6 +10,14 @@ use App\Http\Requests\TopicCreateRequest;
 
 class TopicController extends Controller
 {
+    public function index() {
+        //get all 
+        //$topics = Topic::latestFirst()->get();
+        // get 5 per page
+        $topics = Topic::latestFirst()->paginate(5);
+        return TopicResource::collection($topics);
+    }
+
     public function store(TopicCreateRequest $request) {
         $topic = new Topic;
         $topic->title = $request->title;

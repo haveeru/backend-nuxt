@@ -21,6 +21,11 @@ class User extends Authenticatable implements JWTSubject
         'password', 'remember_token',
     ];
 
+    // if the use id matches the topic id then  use can update topic
+    public function ownsTopic(Topic $topic) {
+        return $this->id === $topic->user->id;
+    }
+
     public function getJWTIdentifier() {
 		// return the primary key of the user - user id
 		return $this->getKey();

@@ -19,4 +19,9 @@ class TopicPolicy
     public function update(User $user, Topic $topic) {
         return $user->ownsTopic($topic);
     }
+
+    // check if the user owns a topic or not then delete if it is owned
+    public function destroy(User $user, Topic $topic) {
+        return $user->ownsTopic($topic);
+    }
 }

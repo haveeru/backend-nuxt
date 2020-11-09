@@ -13,4 +13,5 @@ Route::group(['prefix' => 'topics'], function() {
     Route::get('/{topic}', 'TopicController@show');
     // update post
     Route::patch('/{topic}', 'TopicController@update')->middleware('auth:api');
+    Route::delete('/{topic}', 'TopicController@destroy')->middleware('auth:api');
 });

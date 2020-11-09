@@ -9,6 +9,8 @@ Route::group(['prefix' => 'topics'], function() {
     Route::post('/', 'TopicController@store')->middleware('auth:api');
     // middleware is not used because it is a public route
     Route::get('/', 'TopicController@index');
-    // single post
+    // single topic
     Route::get('/{topic}', 'TopicController@show');
+    // update post
+    Route::patch('/{topic}', 'TopicController@update')->middleware('auth:api');
 });

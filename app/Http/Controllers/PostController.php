@@ -7,7 +7,7 @@ use App\Http\Requests\UpdatePostRequest;
 use App\Http\Resources\Post as PostResource;
 use App\Post;
 use App\Topic;
-//use Illuminate\Http\Request;
+use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
@@ -22,6 +22,10 @@ class PostController extends Controller
         return new PostResource($post);
     }
 
+    public function show(Request $request, Topic $topic, Post $post)
+    {
+        return new PostResource($post);
+    }
 
     public function update(UpdatePostRequest $request, Topic $topic, Post $post)
     {

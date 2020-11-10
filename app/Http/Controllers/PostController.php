@@ -1,8 +1,9 @@
 <?php
-
+//php artisan make:controller PostController
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StorePostRequest;
+use App\Http\Requests\UpdatePostRequest;
 use App\Http\Resources\Post as PostResource;
 use App\Post;
 use App\Topic;
@@ -19,5 +20,21 @@ class PostController extends Controller
         // post will be saved to given post
         $topic->posts()->save($post);
         return new PostResource($post);
+    }
+
+
+    public function update(UpdatePostRequest $request, Topic $topic, Post $post)
+    {
+        $this->authorize('update', $post);
+        $post->body = $request->get('body', $post->body);
+        $post->save();
+        return new PostResource($post);
+    }
+
+    public function destroy(Topic $topic, Post $post)
+    {
+        $this->authorize('destroy', $post);
+        $post->delete();
+        return response(null, 204);
     }
 }

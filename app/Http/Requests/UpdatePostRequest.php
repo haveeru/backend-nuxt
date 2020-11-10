@@ -1,10 +1,10 @@
 <?php
-
+// php artisan make:request UpdatePostRequest
 namespace App\Http\Requests;
-// php artisan make:request StorePostRequest
+
 use Illuminate\Foundation\Http\FormRequest;
 
-class StorePostRequest extends FormRequest
+class UpdatePostRequest extends FormRequest
 {
     public function authorize()
     {
@@ -14,7 +14,7 @@ class StorePostRequest extends FormRequest
     public function rules()
     {
         return [
-            'body' => 'required|max:2000',
+            'body' => 'max:2000',
         ];
     }
 }
